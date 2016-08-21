@@ -1,0 +1,29 @@
+{
+  "name": "React-1",
+  "version": "0.0.0",
+  "description": "React-1",
+  "main": "bundle.js",
+  "repository": {
+    "type": "git",
+    "url": ".."
+  },
+  "keywords": [
+    "react",
+    "webpack"
+  ],
+  "author": "wuhan",
+  "dependencies": {
+    "react": "~15.1.0",
+    "webpack": "~1.13.1",
+    "react-dom": "^15.0.1"
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+    "bulid": "webpack",
+    "start": "webpack-dev-server --hot --devtool eval --progress --colors --content-base build"
+  },
+  "author": "",
+  "license": "ISC"
+}
