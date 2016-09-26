@@ -13,7 +13,7 @@ var Hello = React.createClass({
 
         //1.-------------------------箭头操作符
         var array = [1,2,3];
-        array.forEach(v => console.log(v));
+        array.forEach((v) => console.log(v));
 
         //2.-------------------------类
         class Animal {
@@ -123,6 +123,51 @@ var Hello = React.createClass({
             console.log(err); // Error: "It broke"
         });
 
+        //10.module------------------------模块
+
+        //传统写法requirejs
+            //content.js
+            define('content.js',function(){
+                return 'A cat';
+            })
+            //index.js
+            require(['./content.js'],function(animal){
+                console.log(animal);
+            })
+
+        //commonjs写法
+            //content.js
+            module.exports = 'A cat';
+            //index.js
+            var animal = require('./content.js');
+
+        //ES6语法
+            //content.js
+            export default 'A cat';
+            //index.js
+            import animal from './content.js';
+
+        //ES6其他高级用法
+            //content.js
+            export default 'A cat'
+            export function say() {
+                return 'Hello!'
+            }
+            export const type = 'dog'
+
+            //index.js
+            import animal, {say , type} from './content'
+            let says = say()
+            console.log(`The ${type} says ${says} to ${animal}`)
+            //注意：大括号中的变量名必须要与被导入模块的外接的名称相同,import写在外面的为默认值
+
+            //模块的整体加载
+            import animal, * as content from './content'
+            let says = content.say()
+            console.log(`The ${content.type} says ${says} to ${animal}`)
+
+
+        //ES6和CommonJS模块完全不同。CommonJS模块输出的是一个值得拷贝，而ES6模块输出的是值的引用。即循环加载模块的时候，CommonJS是不会影响的，而ES6是会相互影响的。
     },
     render : function () {
         return (
